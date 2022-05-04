@@ -19,13 +19,7 @@ namespace Hometask_Basic_Knowledge
             }
             return numbersOnly;
         }
-        [Test]
-        public void GetIntegersFromListTest1()
-        {
-            List<object> expected = new List<object>() { 1, 2 };
-            List<object> actual = GetIntegersFromList(new List<object>() { 1, 2, 'a', 'b' });
-            Assert.AreEqual(expected, actual);
-        }
+
         [Test]
         public void GetIntegersFromListTest2()
         {
