@@ -9,29 +9,41 @@ namespace Hometask_Basic_Knowledge
     {
         public List<object> GetIntegersFromList(List<object> mixedList)
         {
-            List<object> numbersOnly = new List<object>();
             for (int i = 0; i < mixedList.Count; i++)
             {
-                if (mixedList[i].GetType() == typeof(int))
+                if (mixedList[i].GetType() == typeof(string))
                 {
-                    numbersOnly.Add(mixedList[i]);
+                    mixedList.RemoveAt(i);
+                    i--;
+                }
+                else if (mixedList[i].GetType() != typeof(int) || (int)mixedList[i] < 0)
+                {
+                    return new List<object> { ("Incorrect input") };
                 }
             }
-            return numbersOnly;
+           
+            return mixedList;
         }
 
         [Test]
-        public void GetIntegersFromListTest2()
+        public void GetIntegersFromListTest1()
         {
             List<object> expected = new List<object>() { 1, 2, 0, 15 };
-            List<object> actual = GetIntegersFromList(new List<object>() { 1, 2, 'a', 'b', 0, 15 });
+            List<object> actual = GetIntegersFromList(new List<object>() { 1, 2, "absc", "str", 0, 15 });
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void GetIntegersFromListTest2()
+        {
+            List<object> expected = new List<object>() { 1, 2, 231 };
+            List<object> actual = GetIntegersFromList(new List<object>() { 1, 2, "a", "c", "aasf", "1", "123", 231 });
             Assert.AreEqual(expected, actual);
         }
         [Test]
         public void GetIntegersFromListTest3()
         {
-            List<object> expected = new List<object>() { 1, 2, 231 };
-            List<object> actual = GetIntegersFromList(new List<object>() { 1, 2, 'a', 'b', "aasf", '1', "123", 231 });
+            List<object> expected = new List<object>() { "Incorrect input" };
+            List<object> actual = GetIntegersFromList(new List<object>() { 1, '0', "chair" });
             Assert.AreEqual(expected, actual);
         }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "StL31gCxqypf2bWhbL8qszeCbOOE0JJCBq8BXT+4nIlkpBzxtpQXsDaFqDHAm/n6u1oTRgj02SgkmCsB8Asg3Q==",
+  "dgSpecHash": "JG4bhqoGpKSIiNJLsLvWfRIVzL6W9YT5E7Dnk+iXUZAj/AML95q6sNGQLwW6KdI/ta7n7RY95uPvvfU11P4GoQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Daniel\\Source\\Repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj",
+  "projectFilePath": "C:\\Users\\Daniel\\source\\repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",

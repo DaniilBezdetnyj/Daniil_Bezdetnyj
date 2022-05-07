@@ -10,34 +10,33 @@ namespace Hometask_Basic_Knowledge
     {
         public int nextBigger(int input)
         {
-            char[] inputStr = input.ToString().ToCharArray();
-            for (int i = inputStr.Length - 1; i > 0; i--)
+            char[] splitted_input = input.ToString().ToCharArray();
+            for (int i = splitted_input.Length - 1; i >= 1; i--)
             {
-                if ((int)inputStr[i] > (int)inputStr[i - 1])
+                if ((int)splitted_input[i] > (int)splitted_input[i - 1])
                 {
-                    char tempswap = inputStr[i];
-                    inputStr[i] = inputStr[i - 1];
-                    inputStr[i - 1] = tempswap;
-                    break;
+                    char helper = splitted_input[i];
+                    splitted_input[i] = splitted_input[i - 1];
+                    splitted_input[i - 1] = helper;
+                    return int.Parse(string.Join("", splitted_input));
                 }
             }
-            int result = Int32.Parse(string.Join("", inputStr));
-            return result != input ? result : -1;
+            return -1;
         }
         [Test]
-        public void nextBiggerTest1()
+        public void ToIncreaseTest1()
         {
-            Assert.AreEqual(2071, nextBigger(2017));
+            Assert.AreEqual(2303, nextBigger(2033));
         }
         [Test]
-        public void nextBiggerTest2()
+        public void ToIncreaseTest2()
         {
-            Assert.AreEqual(2202, nextBigger(2022));
+            Assert.AreEqual(110, nextBigger(101));
         }
         [Test]
-        public void nextBiggerTest3()
+        public void ToIncreaseTest3()
         {
-            Assert.AreEqual(-1, nextBigger(9731));
+            Assert.AreEqual(-1, nextBigger(54321));
         }
     }
 }

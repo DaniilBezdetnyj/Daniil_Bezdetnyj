@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel\\Source\\Repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj": {}
+    "C:\\Users\\Daniel\\source\\repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel\\Source\\Repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj": {
+    "C:\\Users\\Daniel\\source\\repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel\\Source\\Repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\source\\repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj",
         "projectName": "Hometask_Basic_Knowledge",
-        "projectPath": "C:\\Users\\Daniel\\Source\\Repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj",
+        "projectPath": "C:\\Users\\Daniel\\source\\repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\Hometask_Basic_Knowledge.csproj",
         "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel\\Source\\Repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\obj\\",
+        "outputPath": "C:\\Users\\Daniel\\source\\repos\\DaniilBezdetnyj\\Daniil_Bezdetnyj\\Hometask_Basic_Knowledge\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

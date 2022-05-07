@@ -10,42 +10,37 @@ namespace Hometask_Basic_Knowledge
     {
         public int digital_root(int input)
         {
-            if (input < 10)
-            {
+            if (input < 0)
+                return 0;
+            else if (input < 10)
                 return input;
-            }
-            char[] strInput = input.ToString().ToCharArray();
+            char[] splitted_input = (input.ToString()).ToCharArray();
             int sum = 0;
-            for (int i = 0; i < strInput.Length; i++)
+            for (int i = 0; i < splitted_input.Length; i++)
             {
-                sum += Int32.Parse((strInput[i].ToString()));
+                sum += int.Parse(splitted_input[i].ToString());
             }
             return digital_root(sum);
         }
         [Test]
-        public void digital_root1()
+        public void digital_root_Test1()
         {
             Assert.AreEqual(7, digital_root(16));
         }
         [Test]
-        public void digital_root2()
+        public void digital_root_Test2()
         {
             Assert.AreEqual(6, digital_root(942));
         }
         [Test]
-        public void digital_root3()
+        public void digital_root_Test3()
         {
-            Assert.AreEqual(6, digital_root(132189));
+            Assert.AreEqual(0, digital_root(-13));
         }
         [Test]
-        public void digital_root4()
+        public void digital_root_Test4()
         {
             Assert.AreEqual(2, digital_root(493193));
-        }
-        [Test]
-        public void digital_root5()
-        {
-            Assert.AreEqual(0, digital_root(0));
         }
     }
 }

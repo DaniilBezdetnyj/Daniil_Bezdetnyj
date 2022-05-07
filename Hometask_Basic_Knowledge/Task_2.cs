@@ -8,33 +8,33 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Task_2
     {
-        public char FirstNonRepeatingLetter(string str)
+        public char first_non_repeating_letter(string str)
         {
-            string stringHelper = str;
-            str = str.ToLower();
-            for (int i = 0; i < str.Length - 1; i++)
+            string helper = str;
+            helper = helper.ToLower();
+            for (int i = 0; i < helper.Length - 1; i++)
             {
-                if (!((str.Substring(0, i) + str.Substring(i + 1)).Contains(str[i])))
+                if (!((helper.Substring(0, i) + helper.Substring(i + 1)).Contains(helper[i])) && char.IsLetter(str[i]))
                 {
-                    return stringHelper[i];
+                    return str[i];
                 }
             }
             return ' ';
         }
         [Test]
-        public void FirstNonRepeatingLetter1()
+        public void first_non_repeating_letter_Test1()
         {
-            Assert.AreEqual('T', FirstNonRepeatingLetter("sTreSS"));
+            Assert.AreEqual('t', first_non_repeating_letter("stress"));
         }
         [Test]
-        public void FirstNonRepeatingLetter2()
+        public void first_non_repeating_letter_Test2()
         {
-            Assert.AreEqual(' ', FirstNonRepeatingLetter("sTreSSret"));
+            Assert.AreEqual(' ', first_non_repeating_letter("poTopt"));
         }
         [Test]
-        public void FirstNonRepeatingLetter3()
+        public void first_non_repeating_letter_Test3()
         {
-            Assert.AreEqual('K', FirstNonRepeatingLetter("Kaalluupptt"));
+            Assert.AreEqual('c', first_non_repeating_letter("88 cases "));
         }
     }
 }
