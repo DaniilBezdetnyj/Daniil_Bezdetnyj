@@ -8,7 +8,7 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Extra_Task_2
     {
-        public string IP_address(long k)
+        public string IPAddress(long k)
         {
             string[] str1 = { ((k - (((k - k%256 - (((k- k % 256) / (256)))%256)/(256*256))%256) - (((k- k % 256) / (256))%256) - k%256)/(256*256*256)).ToString(),
                     (((k - k%256 - (((k- k % 256) / (256)))%256)/(256*256))%256).ToString(),
@@ -18,20 +18,20 @@ namespace Hometask_Basic_Knowledge
             return string.Join('.', str1);
         }
         [Test]
-        public void Test_IP1()
+        public void TestIP1()
         {
-            Assert.AreEqual("128.32.10.1", IP_address(2149583361));
+            Assert.AreEqual("128.32.10.1", IPAddress(2149583361));
         }
 
         [Test]
-        public void Test_IP2()
+        public void TestIP2()
         {
-            Assert.AreEqual("0.0.0.32", IP_address(32));
+            Assert.AreEqual("0.0.0.32", IPAddress(32));
         }
         [Test]
-        public void Test_IP3()
+        public void TestIP3()
         {
-            Assert.AreEqual("0.0.0.0", IP_address(0));
+            Assert.AreEqual("0.0.0.0", IPAddress(0));
         }
     }
 }

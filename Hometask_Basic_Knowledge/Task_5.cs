@@ -8,7 +8,7 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Task_5
     {
-        public string Sort_Guests(string guests)
+        public string SortedGuests(string guests)
         {
             guests = guests.Trim().ToUpper();
             if (guests == "")
@@ -30,25 +30,25 @@ namespace Hometask_Basic_Knowledge
             return result;
         }
         [Test]
-        public void Sort_Guests_Test1()
+        public void SortedGuestsTest1()
         {
             String s = "Fred:Corwill;Wilfred:Corwill;Barney:TornBull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
             String expected = "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)";
-            Assert.AreEqual(expected, Sort_Guests(s));
+            Assert.AreEqual(expected, SortedGuests(s));
         }
         [Test]
-        public void Sort_Guests_Test2()
+        public void SortedGuestsTest2()
         {
             String s = "            ";
             String expected = "";
-            Assert.AreEqual(expected, Sort_Guests(s));
+            Assert.AreEqual(expected, SortedGuests(s));
         }
         [Test]
-        public void Sort_Guests_Test3()
+        public void SortedGuestsTest3()
         {
             String s = " ; ";
             String expected = "";
-            Assert.AreEqual(expected, Sort_Guests(s));
+            Assert.AreEqual(expected, SortedGuests(s));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Extra_Task_1
     {
-        public int nextBigger(int input)
+        public int NextBigger(int input)
         {
             char[] splitted_input = input.ToString().ToCharArray();
             for (int i = splitted_input.Length - 1; i >= 1; i--)
@@ -24,19 +24,19 @@ namespace Hometask_Basic_Knowledge
             return -1;
         }
         [Test]
-        public void ToIncreaseTest1()
+        public void NextBiggerTest1()
         {
-            Assert.AreEqual(2303, nextBigger(2033));
+            Assert.AreEqual(2303, NextBigger(2033));
         }
         [Test]
-        public void ToIncreaseTest2()
+        public void NextBiggerTest2()
         {
-            Assert.AreEqual(110, nextBigger(101));
+            Assert.AreEqual(110, NextBigger(101));
         }
         [Test]
-        public void ToIncreaseTest3()
+        public void NextBiggerTest3()
         {
-            Assert.AreEqual(-1, nextBigger(54321));
+            Assert.AreEqual(-1, NextBigger(54321));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Task_2
     {
-        public char first_non_repeating_letter(string str)
+        public char FirstNonRepeatingLetter(string str)
         {
             string helper = str;
             helper = helper.ToLower();
@@ -22,19 +22,19 @@ namespace Hometask_Basic_Knowledge
             return ' ';
         }
         [Test]
-        public void first_non_repeating_letter_Test1()
+        public void FirstNonRepeatingLetterTest1()
         {
-            Assert.AreEqual('t', first_non_repeating_letter("stress"));
+            Assert.AreEqual('t', FirstNonRepeatingLetter("stress"));
         }
         [Test]
-        public void first_non_repeating_letter_Test2()
+        public void FirstNonRepeatingLetterTest2()
         {
-            Assert.AreEqual(' ', first_non_repeating_letter("poTopt"));
+            Assert.AreEqual(' ', FirstNonRepeatingLetter("poTopt"));
         }
         [Test]
-        public void first_non_repeating_letter_Test3()
+        public void FirstNonRepeatingLetterTest3()
         {
-            Assert.AreEqual('c', first_non_repeating_letter("88 cases "));
+            Assert.AreEqual('c', FirstNonRepeatingLetter("8 cases "));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Task_3
     {
-        public int digital_root(int input)
+        public int DigitalRoot(int input)
         {
             if (input < 0)
                 return 0;
@@ -20,27 +20,27 @@ namespace Hometask_Basic_Knowledge
             {
                 sum += int.Parse(splitted_input[i].ToString());
             }
-            return digital_root(sum);
+            return DigitalRoot(sum);
         }
         [Test]
-        public void digital_root_Test1()
+        public void DigitalRootTest1()
         {
-            Assert.AreEqual(7, digital_root(16));
+            Assert.AreEqual(7, DigitalRoot(16));
         }
         [Test]
-        public void digital_root_Test2()
+        public void DigitalRootTest2()
         {
-            Assert.AreEqual(6, digital_root(942));
+            Assert.AreEqual(6, DigitalRoot(942));
         }
         [Test]
-        public void digital_root_Test3()
+        public void DigitalRootTest3()
         {
-            Assert.AreEqual(0, digital_root(-13));
+            Assert.AreEqual(0, DigitalRoot(-13));
         }
         [Test]
-        public void digital_root_Test4()
+        public void DigitalRootTest4()
         {
-            Assert.AreEqual(2, digital_root(493193));
+            Assert.AreEqual(2, DigitalRoot(493193));
         }
     }
 }
