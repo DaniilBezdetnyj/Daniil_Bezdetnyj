@@ -14,7 +14,7 @@ namespace Hometask_Basic_Knowledge
             helper = helper.ToLower();
             for (int i = 0; i < helper.Length - 1; i++)
             {
-                if (!((helper.Substring(0, i) + helper.Substring(i + 1)).Contains(helper[i])) && char.IsLetter(str[i]))
+                if (helper.IndexOf(helper[i]) == helper.LastIndexOf(helper[i]) && char.IsLetter(str[i]))
                 {
                     return str[i];
                 }
@@ -34,7 +34,7 @@ namespace Hometask_Basic_Knowledge
         [Test]
         public void FirstNonRepeatingLetterTest3()
         {
-            Assert.AreEqual('c', FirstNonRepeatingLetter("8 cases "));
+            Assert.AreEqual('c', FirstNonRepeatingLetter("8 cases"));
         }
     }
 }

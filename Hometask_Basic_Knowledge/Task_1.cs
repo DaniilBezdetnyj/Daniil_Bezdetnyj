@@ -11,17 +11,16 @@ namespace Hometask_Basic_Knowledge
         {
             for (int i = 0; i < mixedList.Count; i++)
             {
-                if (mixedList[i].GetType() == typeof(string))
+                if (mixedList[i] is string)
                 {
                     mixedList.RemoveAt(i);
                     i--;
                 }
-                else if (mixedList[i].GetType() != typeof(int) || (int)mixedList[i] < 0)
+                else if (!(mixedList[i] is int) || (int)mixedList[i] < 0)
                 {
                     return new List<object> { ("Incorrect input") };
                 }
             }
-           
             return mixedList;
         }
 

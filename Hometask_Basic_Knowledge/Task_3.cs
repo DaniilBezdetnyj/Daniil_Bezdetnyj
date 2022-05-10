@@ -14,13 +14,17 @@ namespace Hometask_Basic_Knowledge
                 return 0;
             else if (input < 10)
                 return input;
-            char[] splitted_input = (input.ToString()).ToCharArray();
-            int sum = 0;
-            for (int i = 0; i < splitted_input.Length; i++)
+            while(input >= 10)
             {
-                sum += int.Parse(splitted_input[i].ToString());
+                int itterated_input = 0;
+                while (input != 0)
+                {
+                    itterated_input += input % 10;
+                    input /= 10;
+                }
+                input = itterated_input;
             }
-            return DigitalRoot(sum);
+            return input;
         }
         [Test]
         public void DigitalRootTest1()

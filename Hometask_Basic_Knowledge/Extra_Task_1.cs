@@ -10,15 +10,22 @@ namespace Hometask_Basic_Knowledge
     {
         public int NextBigger(int input)
         {
-            char[] splitted_input = input.ToString().ToCharArray();
-            for (int i = splitted_input.Length - 1; i >= 1; i--)
+            List<int> digits = new List<int>();
+            while(input%10 != input)
             {
-                if ((int)splitted_input[i] > (int)splitted_input[i - 1])
+                digits.Add(input % 10);
+                input /= 10;
+            }
+            digits.Add(input);
+            for(int i = 0; i < digits.Count-1; i++)
+            {
+                if(digits[i] > digits[i + 1])
                 {
-                    char helper = splitted_input[i];
-                    splitted_input[i] = splitted_input[i - 1];
-                    splitted_input[i - 1] = helper;
-                    return int.Parse(string.Join("", splitted_input));
+                    int helper = digits[i];
+                    digits[i] = digits[i + 1];
+                    digits[i + 1] = helper;
+                    digits.Reverse();
+                    return int.Parse(string.Join("", digits));
                 }
             }
             return -1;

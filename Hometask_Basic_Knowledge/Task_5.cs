@@ -17,17 +17,23 @@ namespace Hometask_Basic_Knowledge
             {
                 return "";
             }
-            string[] str = guests.Split(';');
-            string[,] newStr = new string[str.Length, 2];
-            for (int i = 0; i < str.Length; i++)
+            List<Tuple<string, string>> names = new List<Tuple<string, string>>();
+            string[] full_names = guests.Split(';');
+            foreach (string x in full_names)
             {
-                newStr[i, 0] = str[i].Split(':')[1];
-                newStr[i, 1] = str[i].Split(':')[0];
-                str[i] = newStr[i, 0] + ", " + newStr[i, 1];
+                names.Add(new Tuple<string, string>(x.Split(':')[1], x.Split(':')[0]));
             }
-            Array.Sort<string>(str, new Comparison<string>((i1, i2) => i1.CompareTo(i2)));
-            string result = "(" + string.Join(")(", str) + ")";
-            return result;
+            names.Sort((x, y) =>
+            {
+                int result = x.Item1.CompareTo(y.Item1);
+                return result == 0 ? x.Item2.CompareTo(y.Item2) : result;
+            });
+            string str = "";
+            foreach (Tuple<string, string> x in names)
+            {
+                str += x.ToString();
+            }
+            return str;
         }
         [Test]
         public void SortedGuestsTest1()

@@ -8,21 +8,22 @@ namespace Hometask_Basic_Knowledge
     [TestFixture]
     public class Extra_Task_2
     {
-        public string IPAddress(long k)
+        public string IPAddress(uint input)
         {
-            string[] str1 = { ((k - (((k - k%256 - (((k- k % 256) / (256)))%256)/(256*256))%256) - (((k- k % 256) / (256))%256) - k%256)/(256*256*256)).ToString(),
-                    (((k - k%256 - (((k- k % 256) / (256)))%256)/(256*256))%256).ToString(),
-                    (((k- k % 256) / (256))%256).ToString(),
-                    (k%256).ToString()};
-
-            return string.Join('.', str1);
+            string[] ip = new string[4];
+            const int denominator = 256;
+            for (int i = 3; i >= 0; i--)
+            {
+                ip[i] = (input % denominator).ToString();
+                input /= denominator;
+            }
+            return string.Join('.', ip);
         }
         [Test]
         public void TestIP1()
         {
             Assert.AreEqual("128.32.10.1", IPAddress(2149583361));
         }
-
         [Test]
         public void TestIP2()
         {
@@ -32,6 +33,11 @@ namespace Hometask_Basic_Knowledge
         public void TestIP3()
         {
             Assert.AreEqual("0.0.0.0", IPAddress(0));
+        }
+        [Test]
+        public void TestIP4()
+        {
+            Assert.AreEqual("255.255.255.255", IPAddress(4294967295));
         }
     }
 }
