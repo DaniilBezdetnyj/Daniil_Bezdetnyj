@@ -1,7 +1,9 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System.Threading;
+using System;
 
 namespace Selenium
 {
@@ -9,6 +11,8 @@ namespace Selenium
     {
         IWebDriver webdriver;
         ChromeOptions options;
+        Elements element;
+
         ////Data for fill user information
         readonly string[] user_data = 
         {
@@ -19,14 +23,6 @@ namespace Selenium
               "May",
               "2022"
         };
-        //
-
-        public Tests()
-        {
-            options = new ChromeOptions();
-            options.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;
-            webdriver = new ChromeDriver(options);
-        }
 
         [SetUp]
         public void Setup()
@@ -35,22 +31,16 @@ namespace Selenium
             const string username = "DaniilBezdetnyj";
             const string password = "12345678";
 
-            //Go to the site
+            //Connecting 
+            options = new ChromeOptions();
+            options.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;
+            webdriver = new ChromeDriver(options);
             webdriver.Navigate().GoToUrl("https://www.demoblaze.com");
+            element = new Elements(webdriver);
 
-            //Log in button
-            webdriver.FindElement(By.LinkText("Log in")).Click();
-            Thread.Sleep(200);
-
-            //Entering login data
-            webdriver.FindElement(By.Id("loginusername")).SendKeys(username);
-            Thread.Sleep(200);
-            webdriver.FindElement(By.Id("loginpassword")).SendKeys(password);
-
-            //Acception login
-            Thread.Sleep(400);
-            webdriver.FindElement(By.CssSelector("#logInModal .btn-primary")).Click();
-            Thread.Sleep(300);
+            //Log in
+            UserLogin login_object = new UserLogin(webdriver);
+            login_object.Login(username, password);
         }
 
         [Test]
@@ -58,15 +48,15 @@ namespace Selenium
         {
             //Searching and clicking on "Laptops"
             Thread.Sleep(1000);
-            webdriver.FindElement(By.LinkText("Laptops")).Click();
+            element.GetLaptopsLabel().Click();
             Thread.Sleep(1000);
 
             //Choosing Laptop Dell
-            webdriver.FindElement(By.CssSelector("a[href *= 'prod.html?idp_=12']")).Click();
+            element.GetCurrentLaptop().Click();
             Thread.Sleep(1000);
 
             //Clicking on Add to Cart button
-            webdriver.FindElement(By.CssSelector(" .btn-success")).Click();
+            element.GetAddToCart().Click();
             Thread.Sleep(3000);
 
             //Accepting alert
@@ -74,11 +64,11 @@ namespace Selenium
             Thread.Sleep(1000);
 
             //Going to Cart
-            webdriver.FindElement(By.CssSelector("a[href *= 'cart.html']")).Click();
+            element.GetCart().Click();
             Thread.Sleep(500);
 
             //Click on Place Order
-            webdriver.FindElement(By.CssSelector(" .btn-success")).Click();
+            element.GetPlaceOrder().Click();
             Thread.Sleep(500);
 
             //Fill user data
@@ -97,12 +87,10 @@ namespace Selenium
             Thread.Sleep(100);
 
             //Clicking on Accept button
-            webdriver.FindElement(By.XPath("//button[contains(@onclick,'purchaseOrder')]")).Click();
+            element.GetAcceptButton().Click();
             Thread.Sleep(1000);
 
             Assert.AreEqual(true, (webdriver.FindElements(By.Id("orderModal")).Count == 1));
-            webdriver.Quit();
-
         }
 
         [Test]
@@ -110,15 +98,15 @@ namespace Selenium
         {
             //Searching and clicking on "Phones"
             Thread.Sleep(1000);
-            webdriver.FindElement(By.LinkText("Phones")).Click();
+            element.GetPhonesLabel().Click();
             Thread.Sleep(1000);
 
             //Choosing Nexus 6
-            webdriver.FindElement(By.CssSelector("a[href *= 'prod.html?idp_=3']")).Click();
+            element.GetCurrentPhone().Click();
             Thread.Sleep(1000);
 
             //Clicking on Add to Cart button
-            webdriver.FindElement(By.CssSelector(" .btn-success")).Click();
+            element.GetAddToCart().Click();
             Thread.Sleep(3000);
 
             //Accepting alert
@@ -126,11 +114,11 @@ namespace Selenium
             Thread.Sleep(1000);
 
             //Going to Cart
-            webdriver.FindElement(By.CssSelector("a[href *= 'cart.html']")).Click();
+            element.GetCart().Click();
             Thread.Sleep(500);
 
             //Click on Place Order
-            webdriver.FindElement(By.CssSelector(" .btn-success")).Click();
+            element.GetPlaceOrder().Click();
             Thread.Sleep(500);
 
             //Fill user data
@@ -149,11 +137,17 @@ namespace Selenium
             Thread.Sleep(100);
 
             //Clicking on Accept button
-            webdriver.FindElement(By.XPath("//button[contains(@onclick,'purchaseOrder')]")).Click();
+            element.GetAcceptButton().Click();
             Thread.Sleep(1000);
 
             Assert.AreEqual(true, (webdriver.FindElements(By.Id("orderModal")).Count == 1));
+        }
+
+        [TearDown]
+        public void Close_Browser()
+        {
             webdriver.Quit();
         }
     }
+    
 }
