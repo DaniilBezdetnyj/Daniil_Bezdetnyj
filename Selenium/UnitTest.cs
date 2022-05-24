@@ -2,7 +2,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using System.Threading;
+using SeleniumExtras.WaitHelpers;
 using System;
 
 namespace Selenium
@@ -11,9 +11,10 @@ namespace Selenium
     {
         IWebDriver webdriver;
         ChromeOptions options;
-        Elements element;
+        PurchaseElements purchase_element;
+        UserDataElements user_data_element;
 
-        ////Data for fill user information
+        //Data for fill user information
         readonly string[] user_data = 
         {
               "Daniil",
@@ -34,9 +35,14 @@ namespace Selenium
             //Connecting 
             options = new ChromeOptions();
             options.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;
+            
             webdriver = new ChromeDriver(options);
+            webdriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            webdriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
             webdriver.Navigate().GoToUrl("https://www.demoblaze.com");
-            element = new Elements(webdriver);
+            
+            purchase_element = new PurchaseElements(webdriver);
+            user_data_element = new UserDataElements(webdriver);
 
             //Log in
             UserLogin login_object = new UserLogin(webdriver);
@@ -47,100 +53,74 @@ namespace Selenium
         public void LaptopTest()
         {
             //Searching and clicking on "Laptops"
-            Thread.Sleep(1000);
-            element.GetLaptopsLabel().Click();
-            Thread.Sleep(1000);
+            purchase_element.GetLaptopsLabel().Click();
 
             //Choosing Laptop Dell
-            element.GetCurrentLaptop().Click();
-            Thread.Sleep(1000);
+            purchase_element.GetCurrentLaptop().Click();
 
             //Clicking on Add to Cart button
-            element.GetAddToCart().Click();
-            Thread.Sleep(3000);
+            purchase_element.GetAddToCart().Click();
 
             //Accepting alert
-            webdriver.SwitchTo().Alert().Accept();
-            Thread.Sleep(1000);
+            purchase_element.SubmitAlert();
 
             //Going to Cart
-            element.GetCart().Click();
-            Thread.Sleep(500);
+            purchase_element.GetCart().Click();
 
             //Click on Place Order
-            element.GetPlaceOrder().Click();
-            Thread.Sleep(500);
+            purchase_element.GetPlaceOrder().Click();
 
             //Fill user data
             int i = -1;
-            webdriver.FindElement(By.Id("name")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("country")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("city")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("card")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("month")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("year")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
+            user_data_element.GetNameField().SendKeys(user_data[++i]);
+            user_data_element.GetCountryField().SendKeys(user_data[++i]);
+            user_data_element.GetCityField().SendKeys(user_data[++i]);
+            user_data_element.GetCardField().SendKeys(user_data[++i]);
+            user_data_element.GetMonthField().SendKeys(user_data[++i]);
+            user_data_element.GetYearField().SendKeys(user_data[++i]);
 
             //Clicking on Accept button
-            element.GetAcceptButton().Click();
-            Thread.Sleep(1000);
+            purchase_element.GetAcceptButton().Click();
 
-            Assert.AreEqual(true, (webdriver.FindElements(By.Id("orderModal")).Count == 1));
+            string checker = purchase_element.GetThanksForm().Text;
+            Assert.AreEqual(true, checker.Contains("Thank you for your purchase!"));
         }
-
+       
         [Test]
         public void PhonesTest()
         {
             //Searching and clicking on "Phones"
-            Thread.Sleep(1000);
-            element.GetPhonesLabel().Click();
-            Thread.Sleep(1000);
+            purchase_element.GetPhonesLabel().Click();
 
             //Choosing Nexus 6
-            element.GetCurrentPhone().Click();
-            Thread.Sleep(1000);
+            purchase_element.GetCurrentPhone().Click();
 
             //Clicking on Add to Cart button
-            element.GetAddToCart().Click();
-            Thread.Sleep(3000);
+            purchase_element.GetAddToCart().Click();
 
             //Accepting alert
-            webdriver.SwitchTo().Alert().Accept();
-            Thread.Sleep(1000);
+            purchase_element.SubmitAlert();
 
             //Going to Cart
-            element.GetCart().Click();
-            Thread.Sleep(500);
+            purchase_element.GetCart().Click();
 
             //Click on Place Order
-            element.GetPlaceOrder().Click();
-            Thread.Sleep(500);
+            purchase_element.GetPlaceOrder().Click();
 
             //Fill user data
             int i = -1;
-            webdriver.FindElement(By.Id("name")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("country")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("city")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("card")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("month")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
-            webdriver.FindElement(By.Id("year")).SendKeys(user_data[++i]);
-            Thread.Sleep(100);
+            user_data_element.GetNameField().SendKeys(user_data[++i]);
+            user_data_element.GetCountryField().SendKeys(user_data[++i]);
+            user_data_element.GetCityField().SendKeys(user_data[++i]);
+            user_data_element.GetCardField().SendKeys(user_data[++i]);
+            user_data_element.GetMonthField().SendKeys(user_data[++i]);
+            user_data_element.GetYearField().SendKeys(user_data[++i]);
 
             //Clicking on Accept button
-            element.GetAcceptButton().Click();
-            Thread.Sleep(1000);
+            purchase_element.GetAcceptButton().Click();
 
-            Assert.AreEqual(true, (webdriver.FindElements(By.Id("orderModal")).Count == 1));
+            string checker = purchase_element.GetThanksForm().Text;
+            Assert.AreEqual(true, checker.Contains("Thank you for your purchase!"));
         }
 
         [TearDown]

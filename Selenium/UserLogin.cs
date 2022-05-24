@@ -9,13 +9,13 @@ namespace Selenium
 {
     public class UserLogin
     {
-        Elements element;
+        UserLoginElements element;
         private readonly IWebDriver webDriver;
 
         public UserLogin(IWebDriver driver)
         {
             webDriver = driver;
-            element = new Elements(driver);
+            element = new UserLoginElements(driver);
         }
         public void GoToLogin()
         {
@@ -43,11 +43,8 @@ namespace Selenium
         public UserLogin Login(string username, string password)
         {
             GoToLogin();
-            Thread.Sleep(200);
             EnterUsername(username);
-            Thread.Sleep(200);
             EnterPassword(password);
-            Thread.Sleep(200);
             return SumbitLogin();
         }
     }

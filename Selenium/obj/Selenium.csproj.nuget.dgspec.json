@@ -45,10 +45,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "ExtentReports": {
-              "target": "Package",
-              "version": "[4.1.0, )"
-            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.2.0, )"
@@ -57,17 +53,9 @@
               "target": "Package",
               "version": "[3.13.3, )"
             },
-            "NUnit.Allure": {
-              "target": "Package",
-              "version": "[1.2.1.1, )"
-            },
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.2.1, )"
-            },
-            "Selenium.Opera.WebDriver": {
-              "target": "Package",
-              "version": "[2.30.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
