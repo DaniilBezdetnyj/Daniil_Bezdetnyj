@@ -22,7 +22,8 @@ namespace Selenium
               "Kyiv",
               "5555 4444 3232 7897",
               "May",
-              "2022"
+              "2022",
+              "helper"
         };
 
         [SetUp]
